@@ -6,6 +6,7 @@ import 'ui/screens/library/library_screen.dart';
 import 'ui/screens/settings/settings_screen.dart';
 import 'ui/states/settings_state.dart';
 import 'ui/theme/theme.dart';
+import 'ui/screens/home/home_screen.dart';
 
 ///
 /// Launch the application with the given list of providers
@@ -32,7 +33,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _currentIndex = 1;
 
-  final List<Widget> _pages = [LibraryScreen(), FavoriteScreen(), SettingsScreen()];
+ final List<Widget> _pages = [HomeScreen(), LibraryScreen(), FavoriteScreen(), SettingsScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +68,9 @@ class _MyAppState extends State<MyApp> {
               icon: Icon(Icons.settings),
               label: 'Settings',
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+               label: 'Home'),
           ],
         ),
       ),

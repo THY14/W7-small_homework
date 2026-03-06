@@ -2,25 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../data/repositories/songs/song_repository.dart';
+import '../../../data/repositories/user_history/user_history_repository.dart';
 import '../../../ui/states/player_state.dart';
-import 'view_model/library_view_model.dart';
-import 'widgets/library_content.dart';
+import 'view_model/home_view_model.dart';
+import 'widgets/home_content.dart';
 
-class LibraryScreen extends StatefulWidget {
-  const LibraryScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<LibraryScreen> createState() => _LibraryScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _LibraryScreenState extends State<LibraryScreen> {
-  late final LibraryViewModel _viewModel;
+class _HomeScreenState extends State<HomeScreen> {
+  late final HomeViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _viewModel = LibraryViewModel(
+    _viewModel = HomeViewModel(
       songRepository: context.read<SongRepository>(),
+      userHistoryRepository: context.read<UserHistoryRepository>(),
       playerState: context.read<PlayerState>(),
     );
     _viewModel.init();
@@ -36,7 +38,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
       value: _viewModel,
-      child: const LibraryContent(),
+      child: const HomeContent(),
     );
   }
 }
